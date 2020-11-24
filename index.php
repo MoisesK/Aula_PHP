@@ -1,14 +1,37 @@
 <?php
+    session_start()
+?>
 
-$categorias = [];
-$categorias[] = 'infantil';
-$categorias[] = 'adolescente';
-$categorias[] = 'adulto';
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulário de inscrição</title>
+</head>
+<body>
 
-//print_r($categorias);
+    <p style="font-family: Impact;"> FORMULÁRIO DE INSCRIÇÃO PARA COMPETIDORES</p>
+    
+<form action="script.php" method="POST">
+        <?php
+            $MensagemDeSucesso = isset($_SESSION['mensagem-de-sucesso']) ? $_SESSION['mensagem-de-sucesso'] : '';
+            if(!empty($MensagemDeSucesso))
+            {
+                echo $MensagemDeSucesso;
+            }
 
-$nome = 'Moises'
-$idade = 20;
+            $MensagemDeErro = isset($_SESSION['mensagem-de-erro']) ? $_SESSION['mensagem-de-erro'] : '';
+            if(!empty($MensagemDeErro))
+            {
+                echo $MensagemDeErro;
+            }
+        ?>
 
-var_dump($nome);
-var_dump($idade)
+    <p>Seu nome: <input type="text" name="nome" style="margin-left: 5px;"></p>
+    <p>Sua Idade: <input type="text" name="idade" style="margin: 5px;"></p>
+    <p><input type="submit" value="Enviar dado do competidor"/></p>
+</form>
+    
+</body>
+</html>
